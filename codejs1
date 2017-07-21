@@ -1,0 +1,8 @@
+
+$img.attr('alt',filename.substring((filename.lastIndexOf('/'))+1,filename.lastIndexOf('.')));});});$(document).ready(function(){$('img').each(function(){var $img=$(this);var filename=$img.attr('src')
+$img.attr('title',filename.substring((filename.lastIndexOf('/'))+1,filename.lastIndexOf('.')));});});var scrollTimer=null;$(window).scroll(function(){var viewportHeight=$(this).height(),scrollbarHeight=viewportHeight/$(document).height()*viewportHeight,progress=$(this).scrollTop()/($(document).height()-viewportHeight),distance=progress*(viewportHeight-scrollbarHeight)+scrollbarHeight/2-$('#scroll').height()/2;$('#scroll').css('top',distance).text(' ('+Math.round(progress*100)+'%)').fadeIn(100);if(scrollTimer!==null){clearTimeout(scrollTimer);}
+scrollTimer=setTimeout(function(){$('#scroll').fadeOut();},1500);});function smartLink(){this.keywdHref=new Object();this.add=function(keyword,href){if(keyword.substr(0,1)!=" "){keyword=" "+keyword;}
+this.keywdHref[keyword]=href;}
+this.createAnchor=function(){var objs=document.getElementsByTagName("div");for(var i=0;i<objs.length;i++){var obj=objs[i];if(obj.className.indexOf("post-body")>-1){var content=obj.innerHTML;for(var keyword in this.keywdHref){var href=this.keywdHref[keyword];var newstr=content.replace(keyword,"<a href='"+href+"'>"+keyword+"</a>","gi");obj.innerHTML=newstr;content=newstr;}}}}
+this.startScript=function(){var onLoad=window.onload;window.onload=function(){if(onLoad){onLoad();}
+setTimeout("f.createAnchor()",100);}}}
